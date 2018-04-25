@@ -1,24 +1,86 @@
 package com.boker.solstice.contacts.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import com.boker.solstice.contacts.model.Contact;
+import com.boker.solstice.contacts.repo.ContactRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by mboker on 4/24/18.
  */
-@Controller
+@RequestMapping("/contact")
+@RestController
 public class ContactsController {
-    @RequestMapping("/hello")
+    @Autowired
+    ContactRepo repo;
+
+
+    @RequestMapping("/")
     @ResponseBody
     String home(){
         return "Hello World";
     }
 
-    @RequestMapping(value="/{id}")
+    @RequestMapping(value="/{id}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     @ResponseBody
-    String getById(@PathVariable("id") int id){
-        return "Hello World from " + id;
+    Contact getById(@PathVariable("id") Integer id){
+        Optional<Contact> contactRetrieval = repo.findById(id);
+        if (contactRetrieval.isPresent()){
+            return contactRetrieval.get();
+        }
+        return null;
+    }
+
+//    @RequestMapping(value="/email/{email}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+//    @ResponseBody
+//    Contact geyByEmail(@PathVariable("email") String email){
+//        Contact contact = new Contact();
+//        contact.setFullName("Michael Boker");
+//        return contact;
+//    }
+
+//    @RequestMapping(value="/phone/{phone}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+//    @ResponseBody
+//    Contact getByPhone(@PathVariable("phone") String phone){
+//        Contact contact = new Contact();
+//        contact.setFullName("Michael Boker");
+//        return contact;
+//    }
+
+    @RequestMapping(value="/", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @ResponseBody
+    Integer createContact(@RequestBody Contact contact){
+        return repo.save(contact).getId();
+    }
+
+    @RequestMapping(value="/", method = RequestMethod.PUT, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @ResponseBody
+    Contact updateContact(@RequestBody Contact contact){
+        return contact;
+    }
+
+    @RequestMapping(value="/{id}", method = RequestMethod.DELETE, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @ResponseBody
+    Boolean deleteContact(@PathVariable("id") int id){
+        return true;
+    }
+
+    @RequestMapping(value="/state/{state}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @ResponseBody
+    List<Contact> searchByState(@PathVariable("state") String state){
+        List<Contact> results = new ArrayList<>();
+        return results;
+    }
+
+    @RequestMapping(value="/city/{city}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @ResponseBody
+    List<Contact> searchByCity(@PathVariable("city") String city){
+        List<Contact> results = new ArrayList<>();
+        return results;
     }
 }
