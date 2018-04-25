@@ -13,23 +13,11 @@ public class Contact implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
-    @Column(name="street_address")
     private String streetAddress;
-
-    @Column(name="city")
     private String city;
-
-    @Column(name="state")
     private String state;
-
-    @Column(name="email_address")
     private String emailAddress;
-
-    @Column(name="phone_number")
     private String phoneNumber;
-
-    @Column(name="full_name")
     private String fullName;
 
     protected Contact(){}

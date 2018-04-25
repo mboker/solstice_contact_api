@@ -9,17 +9,11 @@ import java.util.List;
  * Created by mboker on 4/25/18.
  */
 public interface ContactRepo extends CrudRepository<Contact, Integer> {
-    List<Contact> getContactsByState(String state);
+    List<Contact> findContactsByState(String state);
 
-    List<Contact> getContactsByCity(String city);
+    List<Contact> findContactsByCity(String city);
 
-    Contact getContactByPhone(String phone);
+    Contact findContactByPhoneNumber(String phone);
 
-    Contact getContactByEmail(String email);
-
-    Contact updateContact(Contact contact);
-
-    Boolean deleteContact(Integer id);
-
-    Integer createContact(Contact contact);
+    Contact findContactByEmailAddress(String email);
 }
