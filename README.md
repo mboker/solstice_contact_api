@@ -1,10 +1,12 @@
 # Installation and Setup
 ## Install postgres
-Visit https://www.postgresql.org/download/ to find installation instructions for your operating system.
+Visit [Download PostgreSQL](https://www.postgresql.org/download/) to find installation instructions for your operating system.
 
 ## Install Java 8
+[Download and Install Java 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
 ## Install Maven 3
+[Download and Install Apache Maven](https://maven.apache.org/install.html)
 
 ## Create solstice postgres user
 On a debian linux OS:  
@@ -36,9 +38,10 @@ In terminal, navigate to root of project
 Build project  
 `mvn install`  
 Run application  
-`java -jar target/contacts-0.0.1-SNAPSHOT.jar`
+`java -jar target/contacts-0.0.1-SNAPSHOT.jar`  
+  
     
-
+  
 # Using the API
 ## Creating a new contact
 Make a POST request to `localhost:8080/contact/` with a JSON body like the following example
