@@ -8,29 +8,35 @@ Visit https://www.postgresql.org/download/ to find installation instructions for
 
 ## Create solstice postgres user
 On a debian linux OS:
-    `sudo su postgres`
-    `psql postgres`
-    `\password postgres`
-        Create a password for postgres admin user
-    `createuser --interactive --password solstice`
+    ```
+    sudo su postgres
+    psql postgres
+    \password postgres
+    ```
+Supply a password for postgres admin user
+    ```
+    createuser --interactive --password solstice
     'Shall the new role be a superuser?'  n
     'Shall the new role be allowed to create databases?'  y
     'Shall the new role be allowed to create more new roles?'  n
-        When prompted for password creation, enter `solstice`
-    In /etc/postgresql/9.5/main/pg_hba.conf, find the line containing the comment, '# "local" is for Unix domain socket connections only', and change the next line to
-    `local   all             all                                     trust`
-    Similarly, change the line under '# IPv4 local connections:' to 
-    `host    all             all             127.0.0.1/32            trust`
-    Now, restart postgres with
-    `sudo service postgresql restart`
+    ```
+When prompted for password creation, enter `solstice`  
+In /etc/postgresql/9.5/main/pg_hba.conf, find the line containing the comment,   
+`# "local" is for Unix domain socket connections only`   
+Change the next line to
+`local   all             all                                     trust`  
+Similarly, change the line under `# IPv4 local connections:` to   
+`host    all             all             127.0.0.1/32            trust`  
+Now, restart postgres with  
+`sudo service postgresql restart`
     
 ## Build and run application
-    In terminal, navigate to root of project
-    `cd contacts`    
-    Build project
-    `mvn install`
-    Run application
-    `java -jar target/contacts-0.0.1-SNAPSHOT.jar`
+In terminal, navigate to root of project  
+`cd contacts`    
+Build project  
+`mvn install`  
+Run application  
+`java -jar target/contacts-0.0.1-SNAPSHOT.jar`
     
 
 # Using the API
