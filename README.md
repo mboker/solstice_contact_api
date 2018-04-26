@@ -25,7 +25,7 @@ Supply a password for postgres admin user
 When prompted for password creation, enter `solstice`  
 In /etc/postgresql/9.5/main/pg_hba.conf, find the line containing the comment,   
 `# "local" is for Unix domain socket connections only`   
-Change the next line to
+Change the next line to  
 `local   all             all                                     trust`  
 Similarly, change the line under `# IPv4 local connections:` to   
 `host    all             all             127.0.0.1/32            trust`  
