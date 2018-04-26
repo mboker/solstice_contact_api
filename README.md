@@ -1,12 +1,12 @@
-#Installation and Setup
-##Install postgres
+# Installation and Setup
+## Install postgres
 Visit https://www.postgresql.org/download/ to find installation instructions for your operating system.
 
-##Install Java 8
+## Install Java 8
 
-##Install Maven 3
+## Install Maven 3
 
-##Create solstice postgres user
+## Create solstice postgres user
 On a debian linux OS:
     `sudo su postgres`
     `psql postgres`
@@ -24,7 +24,7 @@ On a debian linux OS:
     Now, restart postgres with
     `sudo service postgresql restart`
     
-##Build and run application
+## Build and run application
     In terminal, navigate to root of project
     `cd contacts`    
     Build project
@@ -33,8 +33,8 @@ On a debian linux OS:
     `java -jar target/contacts-0.0.1-SNAPSHOT.jar`
     
 
-#Using the API
-##Creating a new contact
+# Using the API
+## Creating a new contact
 Make a POST request to `localhost:8080/contact/` with a JSON body like the following example
 ```
 {
@@ -47,7 +47,7 @@ Make a POST request to `localhost:8080/contact/` with a JSON body like the follo
 }
 ```
 
-##Updating an existing contact
+## Updating an existing contact
 Make a PUT request to `localhost:8080/contact/` with a JSON body like the following, where `id` is set to the id of the record being updated.
 ```
 {
@@ -61,18 +61,18 @@ Make a PUT request to `localhost:8080/contact/` with a JSON body like the follow
 }
 ```
 
-##Deleting an existing contact
+## Deleting an existing contact
 Make a DELETE request to `localhost:8080/contact/<ID>` replacing `<ID>` with the ID of the record to be deleted
 
-##Retrieving a contact
-###By ID
+## Retrieving a contact
+### By ID
 Make a GET request to `localhost:8080/contact/<ID>` replacing `<ID>` with the ID of the record to be retrieved.  This returns a single record, if it exists, otherwise it returns an empty body.
-###By Email
+### By Email
 Make a GET request to `localhost:8080/contact/email/<EMAIL>` replacing `<EMAIL>` with the email address of the record to be retrieved.  This returns an array of records matching the email address, as there is no uniqueness constraint on the email column.  If none are found, an empty body is returned.
-###By Phone
+### By Phone
 Make a GET request to `localhost:8080/contact/email/<PHONE>` replacing `<PHONE>` with the phone number of the record to be retrieved. This returns an array of records matching the phone number, as there is no uniqueness constraint on the phone column.  If none are found, an empty body is returned.
-###By City
+### By City
 Make a GET request to `localhost:8080/contact/city/<CITY>` replacing `<CITY>` with the name of the city to search for.  This returns an array of records matching the city, or an empty body if none are found.
-###By State
+### By State
 Make a GET request to `localhost:8080/contact/state/<STATE>` replacing `<STATE>` with the name of the state to search for.  This returns an array of records matching the state, or an empty body if none are found.
 
