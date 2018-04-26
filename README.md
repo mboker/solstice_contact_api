@@ -7,19 +7,19 @@ Visit https://www.postgresql.org/download/ to find installation instructions for
 ## Install Maven 3
 
 ## Create solstice postgres user
-On a debian linux OS:
-    ```
+On a debian linux OS:  
+```
     sudo su postgres
     psql postgres
     \password postgres
-    ```
-Supply a password for postgres admin user
-    ```
+```  
+Supply a password for postgres admin user  
+```
     createuser --interactive --password solstice
     'Shall the new role be a superuser?'  n
     'Shall the new role be allowed to create databases?'  y
     'Shall the new role be allowed to create more new roles?'  n
-    ```
+```  
 When prompted for password creation, enter `solstice`  
 In /etc/postgresql/9.5/main/pg_hba.conf, find the line containing the comment,   
 `# "local" is for Unix domain socket connections only`   
