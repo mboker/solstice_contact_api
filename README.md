@@ -35,7 +35,7 @@ Now, restart postgres with
 ## Build and run application
 In terminal, navigate to root of project  
 `cd contacts`    
-Build project  
+Run unit tests and build project  
 `mvn install`  
 Run application  
 `java -jar target/contacts-0.0.1-SNAPSHOT.jar`  
