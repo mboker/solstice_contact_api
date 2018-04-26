@@ -43,6 +43,8 @@ Run application
     
   
 # Using the API
+Note: No server-side validation is being done.  String values will need to be used for each field, and they will be stored and retrieved unmodified and unvalidated.  
+
 ## Creating a new contact
 Make a POST request to `localhost:8080/contact/` with a JSON body like the following example
 ```
